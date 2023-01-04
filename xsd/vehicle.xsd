@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" xmlns="http://www.nCar.pt/vehicle" targetNamespace="http://www.nCar.pt/vehicle">
+    <xs:simpleType name="combustivelTipo">
+        <xs:annotation xml:lang="en">
+            <xs:documentation>Types of Fuel available to choose</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Diesel"/>
+            <xs:enumeration value="Gasoline"/>
+            <xs:enumeration value="Electric/Gasoline"/>
+            <xs:enumeration value="Electric"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="transmissãoTipo">
+            <xs:annotation xml:lang="en">
+                <xs:documentation>Type of Transmission the car has</xs:documentation>
+            </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Auto|Manual"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+
+        <xs:complexType name="vehicle">
+            <xs:annotation xml:lang="en">
+                <xs:documentation>Specification of the Vehicle</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="Marca" type="xs:string"/>
+                <xs:element name="Modelo" type="xs:string"/>
+                <xs:element name="Combustivel" type="combustivelTipo"/>
+                <xs:element name="Transmissão" type="transmissãoTipo"/>
+                <xs:element name="Ano" type="xs:int"/>
+                <xs:element name="Potência" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>    
+        
+</xs:schema>

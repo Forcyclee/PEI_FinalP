@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    xmlns="http://www.nCar.pt/expertise" targetNamespace="http://www.nCar.pt/expertise">
+    <xs:include schemaLocation="params.xsd"/>
+        
+    
+    <xs:simpleType name="categoryBase">
+        <xs:annotation>
+            <xs:documentation>Choices available to explain why the expertise wasn't made.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Inaccessible Location"/>
+            <xs:enumeration value="Missing Vehicle"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="otherBase">
+        <xs:annotation>
+            <xs:documentation>Template that serves to explain the reason why the expertise wasn't done if the other choices didn't aplly (max 400 charcters)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value = "400"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="timeBase">
+        <xs:annotation>
+            <xs:documentation>Template to represent hours and minutes</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-2][0-9][:][0-5][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="entityType">
+        <xs:annotation>
+            <xs:documentation>Type of client we are dealing with</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Cliente|Oficina"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="entityBase">
+        <xs:annotation>
+            <xs:documentation>Client Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Type" type="entityType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="expertiseInfo">
+        <xs:annotation>
+            <xs:documentation>
+                Elements that need to appear in the expertise (as long as It's done).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="startTime" type="timeBase"/>
+            <xs:element name="endTime" type="timeBase"/>
+            <xs:element name="Entity" type="entityBase"/>
+            <xs:element name="Parameters" type="Parameters"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+      
+        
+              <xs:complexType name="expertise">
+                <xs:annotation>
+                    <xs:documentation>
+                        Expertise schema, If the expertise is missing then It will only ask
+                        for the reason why, If it was done then It asks for the other parameters
+                    </xs:documentation>
+                </xs:annotation>
+                    <xs:sequence>
+                        <xs:element name="Code" type="xs:int"/>
+                        <xs:element name="idPartner" type="xs:string"/>
+                        <xs:element name="idExpert" type="xs:string"/>
+                        <xs:element name="State" type="doneOrnot"/>
+                        <xs:choice>
+                            <xs:element name="expertiseInformation" type="expertiseInfo"/>
+                        <xs:choice>
+                            <xs:element name="Category" type="categoryBase" minOccurs="0"/>
+                            <xs:element name="Reason" type="otherBase" minOccurs="0"/>
+                        </xs:choice>
+                        </xs:choice>
+                        <xs:element name="date" type="xs:date"/> 
+                    </xs:sequence>                
+                </xs:complexType>
+            
+            
+    <xs:simpleType name="doneOrnot">
+        <xs:annotation>
+            <xs:documentation>Informs if the expertise was done</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="YES|NO"/>
+        </xs:restriction>
+    </xs:simpleType>
+            
+            <xs:element name="Expertises">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="expertise" type="expertise" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        
+      
+    
+    
+</xs:schema>

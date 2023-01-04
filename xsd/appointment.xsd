@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    xmlns="http://www.nCar.pt/appointment" targetNamespace="http://www.nCar.pt/appointment" xmlns:c="http://www.nCar.pt/local" xmlns:d="http://www.nCar.pt/vehicle">
+    <xs:import schemaLocation="local.xsd" namespace="http://www.nCar.pt/local"/>
+    <xs:import schemaLocation="vehicle.xsd" namespace="http://www.nCar.pt/vehicle"/>
+       
+    <xs:element name="appointment">
+        <xs:complexType>
+        <xs:annotation>
+            <xs:documentation>
+                Appointment Schema, It contains the vehicle and local files
+            as namespaces, the schema also has a code and a date.
+            </xs:documentation>
+        </xs:annotation>
+                  
+            <xs:sequence>
+                <xs:element name="Code" type="xs:int"/>
+                <xs:element name="idExpert" type="xs:string"/>
+                <xs:element name="Local" type="c:local"/>
+                <xs:element name="Vehicle" type="d:vehicle"/>
+                <xs:element name="date" type="xs:date"/>  
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

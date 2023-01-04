@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Expertises xmlns="http://www.nCar.pt/expertise"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.nCar.pt/expertise ../expertise.xsd">
+    <expertise>
+        <Code>1</Code>
+        <idPartner>1234</idPartner>
+        <idExpert>123</idExpert>
+        <State>NO</State>
+        <Category>Missing Vehicle</Category>
+        <date>2022-11-22</date>
+    </expertise>
+    <expertise>
+        <Code>2</Code>
+        <idPartner>123</idPartner>
+        <idExpert>123</idExpert>
+        <State>YES</State>
+        <expertiseInformation>
+            <startTime>17:40</startTime>
+            <endTime>19:40</endTime>
+            <Entity>
+                <Name>Colas Oficina</Name>
+                <Type>Oficina</Type>
+            </Entity>
+            <Parameters>
+                <Batery>
+                    <Functional>YES</Functional>
+                    
+                </Batery>
+                <Oil>
+                    <Functional>NO</Functional>
+                    <Problem>Leakage from Side cover</Problem>
+                </Oil>
+                <Transmission>
+                    <Functional>NO</Functional>
+                    <Problem>Car not working on Petrol</Problem>
+                </Transmission>
+                <Refrigeration>
+                    <Functional>NO</Functional>
+                    <Problem>Dirty</Problem>
+                </Refrigeration>
+                <motorSupport>
+                    <Functional>YES</Functional>
+                </motorSupport>
+                <motorSound>
+                    <Functional>YES</Functional>
+                </motorSound>
+                <Gases>
+                    <Functional>NO</Functional>
+                    <Problem>Black</Problem>
+                </Gases>
+                <gearBox>
+                    <Functional>NO</Functional>
+                    <Problem>Auto Transmission Not Satisfactory</Problem>
+                </gearBox>
+                <Kilometers>1900</Kilometers>
+            </Parameters>
+        </expertiseInformation>
+        <date>2022-11-22</date>
+    </expertise>
+</Expertises>

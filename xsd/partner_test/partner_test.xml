@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<partner xmlns="http://www.nCar.pt/partner"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.nCar.pt/partner ../partner.xsd">
+    <Name>Colas</Name>
+    <Code>1234</Code>    
+</partner>

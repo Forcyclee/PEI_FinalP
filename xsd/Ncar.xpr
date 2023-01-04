@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns="\QNcar.xpr\E" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>Git_client_plugin_preferences_page</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>PLUGIN_CUSTOM_OPTIONS.com.oxygenxml.git.notify.about.new.remote.commits</String>
+                        <String>true</String>
+                    </entry>
+                    <entry>
+                        <String>PLUGIN_CUSTOM_OPTIONS.com.oxygenxml.git.update.submodules.on.pull</String>
+                        <String>true</String>
+                    </entry>
+                    <entry>
+                        <String>PLUGIN_CUSTOM_OPTIONS.com.oxygenxml.git.when.repo.detected.in.project</String>
+                        <String>ASK_TO_SWITCH_TO_WC</String>
+                    </entry>
+                    <entry>
+                        <String>default.xml.schema.version</String>
+                        <String>1.1</String>
+                    </entry>
+                    <entry>
+                        <String>key.xml.schema.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="Ncar.xpr">
+        <folder path="."/>
+    </projectTree>
+</project>

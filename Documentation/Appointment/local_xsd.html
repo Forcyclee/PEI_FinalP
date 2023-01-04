@@ -1,0 +1,1892 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for local.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript"><!--
+        var propertiesBoxes= new Array('properties_local.xsd', 
+				'properties_local_Residence', 
+				'properties_residenceBase_City', 
+				'properties_residenceBase_postalCode', 
+				'properties_residenceBase_Road', 
+				'properties_residenceBase_doorNumber', 
+				'properties_residenceBase_geographicLocation', 
+				'properties_geographicBase_Latitude', 
+				'properties_geographicBase_Longitude', 
+				'properties_local_tipoCliente', 
+				'properties_local_Owner', 
+				'properties_local_Name');
+var facetsBoxes= new Array('facets_residenceBase_postalCode', 
+				'facets_local_tipoCliente', 
+				'facets_postalcodeBase', 
+				'facets_entityType');
+var usedByBoxes= new Array('usedBy_local', 
+				'usedBy_residenceBase', 
+				'usedBy_postalcodeBase', 
+				'usedBy_geographicBase', 
+				'usedBy_entityType');
+var sourceBoxes= new Array('source_local_Residence', 
+				'source_residenceBase_City', 
+				'source_residenceBase_postalCode', 
+				'source_residenceBase_Road', 
+				'source_residenceBase_doorNumber', 
+				'source_residenceBase_geographicLocation', 
+				'source_geographicBase_Latitude', 
+				'source_geographicBase_Longitude', 
+				'source_local_tipoCliente', 
+				'source_local_Owner', 
+				'source_local_Name', 
+				'source_local', 
+				'source_residenceBase', 
+				'source_postalcodeBase', 
+				'source_geographicBase', 
+				'source_entityType');
+var instanceBoxes= new Array('instance_local_Residence', 
+				'instance_residenceBase_geographicLocation');
+var diagramBoxes= new Array('diagram_local_Residence', 
+				'diagram_residenceBase_City', 
+				'diagram_residenceBase_postalCode', 
+				'diagram_residenceBase_Road', 
+				'diagram_residenceBase_doorNumber', 
+				'diagram_residenceBase_geographicLocation', 
+				'diagram_geographicBase_Latitude', 
+				'diagram_geographicBase_Longitude', 
+				'diagram_local_tipoCliente', 
+				'diagram_local_Owner', 
+				'diagram_local_Name', 
+				'diagram_local', 
+				'diagram_residenceBase', 
+				'diagram_postalcodeBase', 
+				'diagram_geographicBase', 
+				'diagram_entityType');
+var annotationBoxes= new Array('annotations_local', 
+				'annotations_residenceBase', 
+				'annotations_postalcodeBase', 
+				'annotations_geographicBase', 
+				'annotations_entityType');
+var modelBoxes= new Array('model_local_Residence', 
+				'model_residenceBase_geographicLocation', 
+				'model_local', 
+				'model_residenceBase', 
+				'model_geographicBase');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="local.xsd"></a><div class="componentTitle">Imported schema <span class="qname">local.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_local.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_local.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_local.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="local_Residence"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#local" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local</a></b> / Residence</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_local_Residence" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_local_Residence');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_local_Residence" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Residence.jpeg" usemap="#local_xsd_Element_Residence" /><map name="local_xsd_Element_Residence" id="local_xsd_Element_Residence"><area alt="local_xsd.tmp#residenceBase_City" href="local_xsd.html#residenceBase_City" coords="195,40,246,65" /><area alt="local_xsd.tmp#residenceBase_postalCode" href="local_xsd.html#residenceBase_postalCode" coords="195,75,280,100" /><area alt="local_xsd.tmp#residenceBase_Road" href="local_xsd.html#residenceBase_Road" coords="195,110,251,135" /><area alt="local_xsd.tmp#residenceBase_doorNumber" href="local_xsd.html#residenceBase_doorNumber" coords="195,145,285,170" /><area alt="local_xsd.tmp#residenceBase_geographicLocation" href="local_xsd.html#residenceBase_geographicLocation" coords="195,180,321,205" /><area alt="local_xsd.tmp#residenceBase" href="local_xsd.html#residenceBase" coords="113,3,237,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_local_Residence" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_local_Residence');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_local_Residence" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_local_Residence" type="image" src="img/btM.gif" value="-" onclick="switchState('model_local_Residence');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_local_Residence" style="display:block"><b><a href="local_xsd.html#residenceBase_City" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">City</a></b> , <b><a href="local_xsd.html#residenceBase_postalCode" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">postalCode</a></b> , <b><a href="local_xsd.html#residenceBase_Road" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Road</a></b> , <b><a href="local_xsd.html#residenceBase_doorNumber" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">doorNumber</a></b> , <b><a href="local_xsd.html#residenceBase_geographicLocation" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicLocation{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="local_xsd.html#residenceBase_City" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">City</a></b>, <b><a href="local_xsd.html#residenceBase_Road" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Road</a></b>, <b><a href="local_xsd.html#residenceBase_doorNumber" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">doorNumber</a></b>, <b><a href="local_xsd.html#residenceBase_geographicLocation" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicLocation</a></b>, <b><a href="local_xsd.html#residenceBase_postalCode" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">postalCode</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_local_Residence" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_local_Residence');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_local_Residence" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;Residence</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/local"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;City</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/City&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;postalCode</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/postalCode&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Road</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Road&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;doorNumber</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/doorNumber&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;geographicLocation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/geographicLocation&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/Residence&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_local_Residence" type="image" src="img/btM.gif" value="-" onclick="switchState('source_local_Residence');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_local_Residence" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Residence"</span><span class="tAN"> type=</span><span class="tAV">"residenceBase"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase_City"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b> / City</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase_City" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase_City');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase_City" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_City.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_residenceBase_City" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_residenceBase_City');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_residenceBase_City" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase_City" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase_City');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase_City" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"City"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase_postalCode"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b> / postalCode</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase_postalCode" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase_postalCode');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase_postalCode" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_postalCode.jpeg" usemap="#local_xsd_Element_postalCode" /><map name="local_xsd_Element_postalCode" id="local_xsd_Element_postalCode"><area alt="local_xsd.tmp#postalcodeBase" href="local_xsd.html#postalcodeBase" coords="113,0,246,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="local_xsd.html#postalcodeBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">postalcodeBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_residenceBase_postalCode" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_residenceBase_postalCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_residenceBase_postalCode" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_residenceBase_postalCode" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_residenceBase_postalCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_residenceBase_postalCode" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase_postalCode" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase_postalCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase_postalCode" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"postalCode"</span><span class="tAN"> type=</span><span class="tAV">"postalcodeBase"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase_Road"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b> / Road</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase_Road" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase_Road');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase_Road" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Road.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_residenceBase_Road" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_residenceBase_Road');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_residenceBase_Road" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase_Road" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase_Road');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase_Road" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Road"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase_doorNumber"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b> / doorNumber</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase_doorNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase_doorNumber');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase_doorNumber" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_doorNumber.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_residenceBase_doorNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_residenceBase_doorNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_residenceBase_doorNumber" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase_doorNumber" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase_doorNumber');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase_doorNumber" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"doorNumber"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase_geographicLocation"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#residenceBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase</a></b> / geographicLocation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase_geographicLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase_geographicLocation');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase_geographicLocation" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_geographicLocation.jpeg" usemap="#local_xsd_Element_geographicLocation" /><map name="local_xsd_Element_geographicLocation" id="local_xsd_Element_geographicLocation"><area alt="local_xsd.tmp#geographicBase_Latitude" href="local_xsd.html#geographicBase_Latitude" coords="239,40,308,65" /><area alt="local_xsd.tmp#geographicBase_Longitude" href="local_xsd.html#geographicBase_Longitude" coords="239,75,317,100" /><area alt="local_xsd.tmp#geographicBase" href="local_xsd.html#geographicBase" coords="157,3,287,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="local_xsd.html#geographicBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_residenceBase_geographicLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_residenceBase_geographicLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_residenceBase_geographicLocation" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_residenceBase_geographicLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('model_residenceBase_geographicLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_residenceBase_geographicLocation" style="display:block"><b><a href="local_xsd.html#geographicBase_Latitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Latitude</a></b> , <b><a href="local_xsd.html#geographicBase_Longitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Longitude</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="local_xsd.html#geographicBase_Latitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Latitude</a></b>, <b><a href="local_xsd.html#geographicBase_Longitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Longitude</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_residenceBase_geographicLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_residenceBase_geographicLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_residenceBase_geographicLocation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;geographicLocation</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/local"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Latitude</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Latitude&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Longitude</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Longitude&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/geographicLocation&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase_geographicLocation" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase_geographicLocation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase_geographicLocation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"geographicLocation"</span><span class="tAN"> type=</span><span class="tAV">"geographicBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geographicBase_Latitude"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#geographicBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicBase</a></b> / Latitude</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geographicBase_Latitude" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geographicBase_Latitude');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geographicBase_Latitude" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Latitude.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:decimal</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_geographicBase_Latitude" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_geographicBase_Latitude');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_geographicBase_Latitude" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geographicBase_Latitude" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geographicBase_Latitude');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geographicBase_Latitude" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Latitude"</span><span class="tAN"> type=</span><span class="tAV">"xs:decimal"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geographicBase_Longitude"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#geographicBase" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicBase</a></b> / Longitude</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geographicBase_Longitude" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geographicBase_Longitude');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geographicBase_Longitude" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Longitude.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:decimal</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_geographicBase_Longitude" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_geographicBase_Longitude');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_geographicBase_Longitude" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geographicBase_Longitude" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geographicBase_Longitude');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geographicBase_Longitude" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Longitude"</span><span class="tAN"> type=</span><span class="tAV">"xs:decimal"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="local_tipoCliente"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#local" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local</a></b> / tipoCliente</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_local_tipoCliente" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_local_tipoCliente');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_local_tipoCliente" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_tipoCliente.jpeg" usemap="#local_xsd_Element_tipoCliente" /><map name="local_xsd_Element_tipoCliente" id="local_xsd_Element_tipoCliente"><area alt="local_xsd.tmp#entityType" href="local_xsd.html#entityType" coords="108,0,213,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="local_xsd.html#entityType" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">entityType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_local_tipoCliente" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_local_tipoCliente');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_local_tipoCliente" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_local_tipoCliente" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_local_tipoCliente');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_local_tipoCliente" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>Cliente|Oficina</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_local_tipoCliente" type="image" src="img/btM.gif" value="-" onclick="switchState('source_local_tipoCliente');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_local_tipoCliente" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"tipoCliente"</span><span class="tAN"> type=</span><span class="tAV">"entityType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="local_Owner"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#local" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local</a></b> / Owner</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_local_Owner" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_local_Owner');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_local_Owner" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Owner.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:boolean</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_local_Owner" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_local_Owner');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_local_Owner" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_local_Owner" type="image" src="img/btM.gif" value="-" onclick="switchState('source_local_Owner');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_local_Owner" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Owner"</span><span class="tAN"> type=</span><span class="tAV">"xs:boolean"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="local_Name"></a><div class="componentTitle">Element <span class="qname"><b><a href="local_xsd.html#local" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local</a></b> / Name</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_local_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_local_Name');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_local_Name" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Element_Name.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_local_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_local_Name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_local_Name" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_local_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('source_local_Name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_local_Name" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="local"></a><div class="componentTitle">Complex Type <span class="qname">local</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_local" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_local');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_local" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template for the location of the Appointment</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_local" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_local');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_local" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Complex_Type_local.jpeg" usemap="#local_xsd_Complex_Type_local" /><map name="local_xsd_Complex_Type_local" id="local_xsd_Complex_Type_local"><area alt="local_xsd.tmp#local_Residence" href="local_xsd.html#local_Residence" coords="196,0,278,25" /><area alt="local_xsd.tmp#local_tipoCliente" href="local_xsd.html#local_tipoCliente" coords="196,35,276,60" /><area alt="local_xsd.tmp#local_Owner" href="local_xsd.html#local_Owner" coords="196,70,261,95" /><area alt="local_xsd.tmp#local_Name" href="local_xsd.html#local_Name" coords="196,105,254,130" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_local" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_local');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_local" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="appointment_xsd.html#appointment_Local" target="mainFrame" title="http://www.nCar.pt/appointment" onclick="updatePageTitle('Schema documentation for appointment.xsd')">appointment/Local</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_local" type="image" src="img/btM.gif" value="-" onclick="switchState('model_local');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_local" style="display:block"><b><a href="local_xsd.html#local_Residence" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Residence</a></b> , <b><a href="local_xsd.html#local_tipoCliente" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">tipoCliente</a></b> , <b><a href="local_xsd.html#local_Owner" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Owner{0,1}</a></b> , <b><a href="local_xsd.html#local_Name" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Name</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="local_xsd.html#local_Name" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Name</a></b>, <b><a href="local_xsd.html#local_Owner" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Owner</a></b>, <b><a href="local_xsd.html#local_Residence" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Residence</a></b>, <b><a href="local_xsd.html#local_tipoCliente" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">tipoCliente</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_local" type="image" src="img/btM.gif" value="-" onclick="switchState('source_local');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_local" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"local"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template for the location of the Appointment</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Residence"</span><span class="tAN"> type=</span><span class="tAV">"residenceBase"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"tipoCliente"</span><span class="tAN"> type=</span><span class="tAV">"entityType"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Owner"</span><span class="tAN"> type=</span><span class="tAV">"xs:boolean"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="residenceBase"></a><div class="componentTitle">Complex Type <span class="qname">residenceBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_residenceBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_residenceBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_residenceBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template for the residence parameter</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_residenceBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_residenceBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_residenceBase" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Complex_Type_residenceBase.jpeg" usemap="#local_xsd_Complex_Type_residenceBase" /><map name="local_xsd_Complex_Type_residenceBase" id="local_xsd_Complex_Type_residenceBase"><area alt="local_xsd.tmp#residenceBase_City" href="local_xsd.html#residenceBase_City" coords="247,0,298,25" /><area alt="local_xsd.tmp#residenceBase_postalCode" href="local_xsd.html#residenceBase_postalCode" coords="247,35,332,60" /><area alt="local_xsd.tmp#residenceBase_Road" href="local_xsd.html#residenceBase_Road" coords="247,70,303,95" /><area alt="local_xsd.tmp#residenceBase_doorNumber" href="local_xsd.html#residenceBase_doorNumber" coords="247,105,337,130" /><area alt="local_xsd.tmp#residenceBase_geographicLocation" href="local_xsd.html#residenceBase_geographicLocation" coords="247,140,373,165" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_residenceBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_residenceBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_residenceBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="local_xsd.html#local_Residence" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local/Residence</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_residenceBase" type="image" src="img/btM.gif" value="-" onclick="switchState('model_residenceBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_residenceBase" style="display:block"><b><a href="local_xsd.html#residenceBase_City" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">City</a></b> , <b><a href="local_xsd.html#residenceBase_postalCode" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">postalCode</a></b> , <b><a href="local_xsd.html#residenceBase_Road" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Road</a></b> , <b><a href="local_xsd.html#residenceBase_doorNumber" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">doorNumber</a></b> , <b><a href="local_xsd.html#residenceBase_geographicLocation" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicLocation{0,1}</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="local_xsd.html#residenceBase_City" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">City</a></b>, <b><a href="local_xsd.html#residenceBase_Road" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Road</a></b>, <b><a href="local_xsd.html#residenceBase_doorNumber" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">doorNumber</a></b>, <b><a href="local_xsd.html#residenceBase_geographicLocation" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">geographicLocation</a></b>, <b><a href="local_xsd.html#residenceBase_postalCode" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">postalCode</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_residenceBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_residenceBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_residenceBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"residenceBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template for the residence parameter</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"City"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"postalCode"</span><span class="tAN"> type=</span><span class="tAV">"postalcodeBase"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Road"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"doorNumber"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"geographicLocation"</span><span class="tAN"> type=</span><span class="tAV">"geographicBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="postalcodeBase"></a><div class="componentTitle">Simple Type <span class="qname">postalcodeBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_postalcodeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_postalcodeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_postalcodeBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template for the postal code</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_postalcodeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_postalcodeBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_postalcodeBase" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Simple_Type_postalcodeBase.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_postalcodeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_postalcodeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_postalcodeBase" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_postalcodeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_postalcodeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_postalcodeBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="local_xsd.html#residenceBase_postalCode" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase/postalCode</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_postalcodeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_postalcodeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_postalcodeBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"postalcodeBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template for the postal code</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9]"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="geographicBase"></a><div class="componentTitle">Complex Type <span class="qname">geographicBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_geographicBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_geographicBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_geographicBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template for the geographic information</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_geographicBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_geographicBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_geographicBase" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Complex_Type_geographicBase.jpeg" usemap="#local_xsd_Complex_Type_geographicBase" /><map name="local_xsd_Complex_Type_geographicBase" id="local_xsd_Complex_Type_geographicBase"><area alt="local_xsd.tmp#geographicBase_Latitude" href="local_xsd.html#geographicBase_Latitude" coords="253,0,322,25" /><area alt="local_xsd.tmp#geographicBase_Longitude" href="local_xsd.html#geographicBase_Longitude" coords="253,35,331,60" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_geographicBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_geographicBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_geographicBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="local_xsd.html#residenceBase_geographicLocation" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">residenceBase/geographicLocation</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_geographicBase" type="image" src="img/btM.gif" value="-" onclick="switchState('model_geographicBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_geographicBase" style="display:block"><b><a href="local_xsd.html#geographicBase_Latitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Latitude</a></b> , <b><a href="local_xsd.html#geographicBase_Longitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Longitude</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="local_xsd.html#geographicBase_Latitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Latitude</a></b>, <b><a href="local_xsd.html#geographicBase_Longitude" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">Longitude</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_geographicBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_geographicBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_geographicBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"geographicBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template for the geographic information</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Latitude"</span><span class="tAN"> type=</span><span class="tAV">"xs:decimal"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Longitude"</span><span class="tAN"> type=</span><span class="tAV">"xs:decimal"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="entityType"></a><div class="componentTitle">Simple Type <span class="qname">entityType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/local</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_entityType" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Type of client we are dealing with</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_entityType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_entityType" style="display:block"><img alt="Diagram" border="0" src="img/local_xsd_Simple_Type_entityType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_entityType" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>Cliente|Oficina</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_entityType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="local_xsd.html#local_tipoCliente" target="mainFrame" title="http://www.nCar.pt/local" onclick="updatePageTitle('Schema documentation for local.xsd')">local/tipoCliente</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_entityType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"entityType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Type of client we are dealing with</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"Cliente|Oficina"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.</div>
+      </div><script type="text/javascript"><!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

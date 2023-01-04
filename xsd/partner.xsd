@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" 
+    xmlns="http://www.nCar.pt/partner" targetNamespace="http://www.nCar.pt/partner">
+    <xs:element name="partner">
+        <xs:annotation>
+            <xs:documentation>
+                Basic schema to validate the addition of a Partner
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name" type="xs:string"/>
+                <xs:element name="Code" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

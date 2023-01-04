@@ -1,0 +1,26 @@
+<appointment xmlns="http://www.nCar.pt/appointment"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.nCar.pt/appointment ../appointment.xsd">
+    <Code>2</Code>
+    <idExpert>123</idExpert>
+    <Local>
+        <Residence xmlns="http://www.nCar.pt/local">
+            <City>Porto</City>
+            <postalCode>4534-404</postalCode>
+            <Road>Rua de Santa Catarina</Road>
+            <doorNumber>200</doorNumber>
+        </Residence>
+        <tipoCliente xmlns="http://www.nCar.pt/local">Cliente</tipoCliente>
+        <Owner xmlns="http://www.nCar.pt/local">true</Owner>
+        <Name xmlns="http://www.nCar.pt/local">Oficina do Colas</Name>
+    </Local>
+    <Vehicle>
+        <Marca xmlns="http://www.nCar.pt/vehicle">Toyota</Marca>
+        <Modelo xmlns="http://www.nCar.pt/vehicle">Corolla</Modelo>
+        <Combustivel xmlns="http://www.nCar.pt/vehicle">Diesel</Combustivel>
+        <Transmissão xmlns="http://www.nCar.pt/vehicle">Auto</Transmissão>
+        <Ano xmlns="http://www.nCar.pt/vehicle">2019</Ano>
+        <Potência xmlns="http://www.nCar.pt/vehicle">1200</Potência>
+    </Vehicle>
+    <date>2022-06-19</date>
+</appointment>

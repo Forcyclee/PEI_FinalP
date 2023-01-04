@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    xmlns="http://www.nCar.pt/local" targetNamespace="http://www.nCar.pt/local">
+    
+    
+    <xs:simpleType name="postalcodeBase">
+        <xs:annotation>
+            <xs:documentation>Template for the postal code</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="geographicBase">
+        <xs:annotation>
+            <xs:documentation>Template for the geographic information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Latitude" type="xs:decimal"/>
+            <xs:element name="Longitude" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="residenceBase">
+        <xs:annotation>
+            <xs:documentation>Template for the residence parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="postalCode" type="postalcodeBase"/>
+            <xs:element name="Road" type="xs:string"/>
+            <xs:element name="doorNumber" type="xs:string"/>
+            <xs:element name="geographicLocation" type="geographicBase" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:simpleType name="entityType">
+        <xs:annotation>
+            <xs:documentation>Type of client we are dealing with</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="Cliente|Oficina"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+        <xs:complexType name="local">
+            <xs:annotation>
+                <xs:documentation>Template for the location of the Appointment</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="Residence" type="residenceBase"/>
+                <xs:element name="tipoCliente" type="entityType"/>
+                <xs:element name="Owner" type="xs:boolean" minOccurs="0"/>
+                <xs:element name="Name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+</xs:schema>

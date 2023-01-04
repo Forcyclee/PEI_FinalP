@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified">
+    
+    <xs:simpleType name="functionalityType">
+        <xs:annotation>
+            <xs:documentation>Shows if the Param is functional or not</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="YES|NO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="bateryChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why battery isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Weak"/>
+            <xs:enumeration value="Not Working"/>
+            <xs:enumeration value="Jump Start"/>
+            <xs:enumeration value="Discharging light glowing"/>
+            <xs:enumeration value="Intermittent functioning"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    
+    <xs:complexType name="bateryBase">
+        <xs:annotation>
+            <xs:documentation>Template for the batery parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="bateryChoice" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:simpleType name="oilChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why Oil isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Dirty"/>
+            <xs:enumeration value="Leakage from Side cover"/>
+            <xs:enumeration value="Leakage from Sump/chamber"/>
+            <xs:enumeration value="Leakage from Tappet Cover"/>
+            <xs:enumeration value="Leakage from Turbo Charger"/>
+            <xs:enumeration value="Leaking"/>
+            <xs:enumeration value="Level Low"/>
+            <xs:enumeration value="Low Pressure warning light glowing"/>
+            <xs:enumeration value="Mixed with Coolant"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="oilBase">
+        <xs:annotation>
+            <xs:documentation>Template for the oil parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="oilChoice" minOccurs="0" maxOccurs="9"/>
+
+        </xs:sequence>
+        
+    </xs:complexType>
+    
+    <xs:simpleType name="transmissionChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the Transmission isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Car not working on Petrol"/>
+            <xs:enumeration value="Fuel Leakage From Injector"/>
+            <xs:enumeration value="MIL light glowing"/>
+            <xs:enumeration value="Misfiring"/>
+            <xs:enumeration value="Not converting to CNG"/>
+            <xs:enumeration value="Over heating"/>
+            <xs:enumeration value="RPM fluctuating"/>
+            <xs:enumeration value="RPM not increasing"/>
+            <xs:enumeration value="Repaired"/>
+            <xs:enumeration value="Seized"/>
+            <xs:enumeration value="Sump Damaged"/>
+            <xs:enumeration value="Turbo charger not working"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="transmissionBase">
+        <xs:annotation>
+            <xs:documentation>Template for the transmission parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="transmissionChoice" minOccurs="0" maxOccurs="12"/>
+
+        </xs:sequence>
+        
+    </xs:complexType>
+    
+    
+    <xs:simpleType name="refrigerationChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the Refrigeration isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Dirty"/>
+            <xs:enumeration value="Leaking"/>
+            <xs:enumeration value="Mixed with Engine Oil"/>
+            <xs:enumeration value="Radiator Damaged"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="refrigerationBase">
+        <xs:annotation>
+            <xs:documentation>Template for the refrigeration parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="refrigerationChoice" minOccurs="0" maxOccurs="4"/>
+
+        </xs:sequence>
+        
+    </xs:complexType>
+    
+    
+    <xs:simpleType name="supportChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the support of the motor isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Broken"/>
+            <xs:enumeration value="Excess Vibration"/>
+            <xs:enumeration value="Loose"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="supportBase">
+        <xs:annotation>
+            <xs:documentation>Template for the support of the motor parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="supportChoice" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+        
+    </xs:complexType>
+    
+    
+    
+    <xs:simpleType name="soundChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the sound of the motor isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Alternator Brg Noise"/>
+            <xs:enumeration value="Engine Auxiliary Noise"/>
+            <xs:enumeration value="Injector Noise"/>
+            <xs:enumeration value="Tappet Noise"/>
+            <xs:enumeration value="Timing Noise"/>
+            <xs:enumeration value="Water Pump Brg Noise"/>
+            <xs:enumeration value="Whistling Noise-Turbo"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="soundBase">
+        <xs:annotation>
+            <xs:documentation>Template for the sound of the motor parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="soundChoice" minOccurs="0" maxOccurs="7"/>
+        </xs:sequence>
+        
+    </xs:complexType>
+    
+    
+    <xs:simpleType name="gasesChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the gases aren't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Black"/>
+            <xs:enumeration value="Blue"/>
+            <xs:enumeration value="Leakage from manifold"/>
+            <xs:enumeration value="Noise from silencer assembly"/>
+            <xs:enumeration value="Silencer assembly damaged"/>
+            <xs:enumeration value="White"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="gasesBase">
+        <xs:annotation>
+            <xs:documentation>Template for the gases parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="gasesChoice" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    <xs:simpleType name="gearboxChoice">
+        <xs:annotation>
+            <xs:documentation>Choices for the reason why the gear box isn't ok</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration  value="Auto Transmission Not Satisfactory"/>
+            <xs:enumeration value="Bearing Noise"/>
+            <xs:enumeration value="Burning"/>
+            <xs:enumeration value="Hard"/>
+            <xs:enumeration value="Low Pick Up"/>
+            <xs:enumeration value="Slip"/>
+            <xs:enumeration value="Spongy"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="gearboxBase">
+        <xs:annotation>
+            <xs:documentation>Template for the gear box parameter</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+                <xs:element name="Functional" type="functionalityType"/>
+                <xs:element name="Problem" type="gearboxChoice" minOccurs="0" maxOccurs="7"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    
+        <xs:complexType name="Parameters">
+            <xs:annotation>
+                <xs:documentation>Template for the list of parameters</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="Batery" type="bateryBase"/>
+                <xs:element name="Oil" type="oilBase"/>
+                <xs:element name="Transmission" type="transmissionBase"/>
+                <xs:element name="Refrigeration" type="refrigerationBase"/>
+                <xs:element name="motorSupport" type="supportBase"/>
+                <xs:element name="motorSound" type="soundBase"/>
+                <xs:element name="Gases" type="gasesBase"/>
+                <xs:element name="gearBox" type="gearboxBase"/>
+                <xs:element name="Kilometers" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    
+</xs:schema>

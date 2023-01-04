@@ -1,0 +1,2856 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for expertise.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript"><!--
+        var propertiesBoxes= new Array('properties_expertise.xsd', 
+				'properties_entityBase_Name', 
+				'properties_entityBase_Type', 
+				'properties_expertiseInfo_startTime', 
+				'properties_expertiseInfo_endTime', 
+				'properties_expertiseInfo_Entity', 
+				'properties_expertiseInfo_Parameters', 
+				'properties_expertise_Code', 
+				'properties_expertise_idPartner', 
+				'properties_expertise_idExpert', 
+				'properties_expertise_State', 
+				'properties_expertise_expertiseInformation', 
+				'properties_expertise_Category', 
+				'properties_expertise_Reason', 
+				'properties_expertise_date', 
+				'properties_Expertises', 
+				'properties_Expertises_expertise');
+var facetsBoxes= new Array('facets_entityBase_Type', 
+				'facets_expertiseInfo_startTime', 
+				'facets_expertiseInfo_endTime', 
+				'facets_expertise_State', 
+				'facets_expertise_Category', 
+				'facets_expertise_Reason', 
+				'facets_categoryBase', 
+				'facets_otherBase', 
+				'facets_timeBase', 
+				'facets_entityType', 
+				'facets_doneOrnot');
+var usedByBoxes= new Array('usedBy_categoryBase', 
+				'usedBy_otherBase', 
+				'usedBy_timeBase', 
+				'usedBy_entityType', 
+				'usedBy_entityBase', 
+				'usedBy_expertiseInfo', 
+				'usedBy_expertise', 
+				'usedBy_doneOrnot');
+var sourceBoxes= new Array('source_entityBase_Name', 
+				'source_entityBase_Type', 
+				'source_expertiseInfo_startTime', 
+				'source_expertiseInfo_endTime', 
+				'source_expertiseInfo_Entity', 
+				'source_expertiseInfo_Parameters', 
+				'source_expertise_Code', 
+				'source_expertise_idPartner', 
+				'source_expertise_idExpert', 
+				'source_expertise_State', 
+				'source_expertise_expertiseInformation', 
+				'source_expertise_Category', 
+				'source_expertise_Reason', 
+				'source_expertise_date', 
+				'source_Expertises', 
+				'source_Expertises_expertise', 
+				'source_categoryBase', 
+				'source_otherBase', 
+				'source_timeBase', 
+				'source_entityType', 
+				'source_entityBase', 
+				'source_expertiseInfo', 
+				'source_expertise', 
+				'source_doneOrnot');
+var instanceBoxes= new Array('instance_expertiseInfo_Entity', 
+				'instance_expertiseInfo_Parameters', 
+				'instance_expertise_expertiseInformation', 
+				'instance_Expertises', 
+				'instance_Expertises_expertise');
+var diagramBoxes= new Array('diagram_entityBase_Name', 
+				'diagram_entityBase_Type', 
+				'diagram_expertiseInfo_startTime', 
+				'diagram_expertiseInfo_endTime', 
+				'diagram_expertiseInfo_Entity', 
+				'diagram_expertiseInfo_Parameters', 
+				'diagram_expertise_Code', 
+				'diagram_expertise_idPartner', 
+				'diagram_expertise_idExpert', 
+				'diagram_expertise_State', 
+				'diagram_expertise_expertiseInformation', 
+				'diagram_expertise_Category', 
+				'diagram_expertise_Reason', 
+				'diagram_expertise_date', 
+				'diagram_Expertises', 
+				'diagram_Expertises_expertise', 
+				'diagram_categoryBase', 
+				'diagram_otherBase', 
+				'diagram_timeBase', 
+				'diagram_entityType', 
+				'diagram_entityBase', 
+				'diagram_expertiseInfo', 
+				'diagram_expertise', 
+				'diagram_doneOrnot');
+var annotationBoxes= new Array('annotations_categoryBase', 
+				'annotations_otherBase', 
+				'annotations_timeBase', 
+				'annotations_entityType', 
+				'annotations_entityBase', 
+				'annotations_expertiseInfo', 
+				'annotations_expertise', 
+				'annotations_doneOrnot');
+var modelBoxes= new Array('model_expertiseInfo_Entity', 
+				'model_expertiseInfo_Parameters', 
+				'model_expertise_expertiseInformation', 
+				'model_Expertises', 
+				'model_Expertises_expertise', 
+				'model_entityBase', 
+				'model_expertiseInfo', 
+				'model_expertise');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="expertise.xsd"></a><div class="componentTitle">Main schema <span class="qname">expertise.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="entityBase_Name"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#entityBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">entityBase</a></b> / Name</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_entityBase_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_entityBase_Name');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_entityBase_Name" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Name.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_entityBase_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_entityBase_Name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_entityBase_Name" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_entityBase_Name" type="image" src="img/btM.gif" value="-" onclick="switchState('source_entityBase_Name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_entityBase_Name" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="entityBase_Type"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#entityBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">entityBase</a></b> / Type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_entityBase_Type" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_entityBase_Type');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_entityBase_Type" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Type.jpeg" usemap="#expertise_xsd_Element_Type" /><map name="expertise_xsd_Element_Type" id="expertise_xsd_Element_Type"><area alt="expertise_xsd.tmp#entityType" href="expertise_xsd.html#entityType" coords="141,9,246,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#entityType" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">entityType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_entityBase_Type" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_entityBase_Type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_entityBase_Type" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_entityBase_Type" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_entityBase_Type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_entityBase_Type" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>Cliente|Oficina</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_entityBase_Type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_entityBase_Type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_entityBase_Type" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Type"</span><span class="tAN"> type=</span><span class="tAV">"entityType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertiseInfo_startTime"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertiseInfo" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo</a></b> / startTime</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertiseInfo_startTime" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertiseInfo_startTime');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertiseInfo_startTime" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_startTime.jpeg" usemap="#expertise_xsd_Element_startTime" /><map name="expertise_xsd_Element_startTime" id="expertise_xsd_Element_startTime"><area alt="expertise_xsd.tmp#timeBase" href="expertise_xsd.html#timeBase" coords="135,9,234,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#timeBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">timeBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertiseInfo_startTime" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertiseInfo_startTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertiseInfo_startTime" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_expertiseInfo_startTime" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_expertiseInfo_startTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_expertiseInfo_startTime" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[0-2][0-9][:][0-5][0-9]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertiseInfo_startTime" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertiseInfo_startTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertiseInfo_startTime" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"startTime"</span><span class="tAN"> type=</span><span class="tAV">"timeBase"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertiseInfo_endTime"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertiseInfo" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo</a></b> / endTime</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertiseInfo_endTime" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertiseInfo_endTime');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertiseInfo_endTime" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_endTime.jpeg" usemap="#expertise_xsd_Element_endTime" /><map name="expertise_xsd_Element_endTime" id="expertise_xsd_Element_endTime"><area alt="expertise_xsd.tmp#timeBase" href="expertise_xsd.html#timeBase" coords="135,9,234,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#timeBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">timeBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertiseInfo_endTime" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertiseInfo_endTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertiseInfo_endTime" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_expertiseInfo_endTime" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_expertiseInfo_endTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_expertiseInfo_endTime" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[0-2][0-9][:][0-5][0-9]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertiseInfo_endTime" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertiseInfo_endTime');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertiseInfo_endTime" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"endTime"</span><span class="tAN"> type=</span><span class="tAV">"timeBase"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertiseInfo_Entity"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertiseInfo" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo</a></b> / Entity</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertiseInfo_Entity" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertiseInfo_Entity');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertiseInfo_Entity" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Entity.jpeg" usemap="#expertise_xsd_Element_Entity" /><map name="expertise_xsd_Element_Entity" id="expertise_xsd_Element_Entity"><area alt="expertise_xsd.tmp#entityBase_Name" href="expertise_xsd.html#entityBase_Name" coords="227,40,332,84" /><area alt="expertise_xsd.tmp#entityBase_Type" href="expertise_xsd.html#entityBase_Type" coords="227,94,340,138" /><area alt="expertise_xsd.tmp#entityBase" href="expertise_xsd.html#entityBase" coords="145,3,247,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#entityBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">entityBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertiseInfo_Entity" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertiseInfo_Entity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertiseInfo_Entity" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_expertiseInfo_Entity" type="image" src="img/btM.gif" value="-" onclick="switchState('model_expertiseInfo_Entity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_expertiseInfo_Entity" style="display:block"><b><a href="expertise_xsd.html#entityBase_Name" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Name</a></b> , <b><a href="expertise_xsd.html#entityBase_Type" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Type</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#entityBase_Name" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Name</a></b>, <b><a href="expertise_xsd.html#entityBase_Type" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Type</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_expertiseInfo_Entity" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_expertiseInfo_Entity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_expertiseInfo_Entity" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;Entity</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Name</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Name&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Type</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Type&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/Entity&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertiseInfo_Entity" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertiseInfo_Entity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertiseInfo_Entity" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Entity"</span><span class="tAN"> type=</span><span class="tAV">"entityBase"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertiseInfo_Parameters"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertiseInfo" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo</a></b> / Parameters</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertiseInfo_Parameters" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertiseInfo_Parameters');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertiseInfo_Parameters" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Parameters.jpeg" usemap="#expertise_xsd_Element_Parameters" /><map name="expertise_xsd_Element_Parameters" id="expertise_xsd_Element_Parameters"><area alt="params_xsd.tmp#Parameters_Batery" href="params_xsd.html#Parameters_Batery" coords="231,40,294,65" /><area alt="params_xsd.tmp#Parameters_Oil" href="params_xsd.html#Parameters_Oil" coords="231,75,282,100" /><area alt="params_xsd.tmp#Parameters_Transmission" href="params_xsd.html#Parameters_Transmission" coords="231,110,326,135" /><area alt="params_xsd.tmp#Parameters_Refrigeration" href="params_xsd.html#Parameters_Refrigeration" coords="231,145,324,170" /><area alt="params_xsd.tmp#Parameters_motorSupport" href="params_xsd.html#Parameters_motorSupport" coords="231,180,327,205" /><area alt="params_xsd.tmp#Parameters_motorSound" href="params_xsd.html#Parameters_motorSound" coords="231,215,320,240" /><area alt="params_xsd.tmp#Parameters_Gases" href="params_xsd.html#Parameters_Gases" coords="231,250,294,275" /><area alt="params_xsd.tmp#Parameters_gearBox" href="params_xsd.html#Parameters_gearBox" coords="231,285,303,310" /><area alt="params_xsd.tmp#Parameters_Kilometers" href="params_xsd.html#Parameters_Kilometers" coords="231,320,312,345" /><area alt="params_xsd.tmp#Parameters" href="params_xsd.html#Parameters" coords="149,3,255,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="params_xsd.html#Parameters" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Parameters</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertiseInfo_Parameters" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertiseInfo_Parameters');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertiseInfo_Parameters" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_expertiseInfo_Parameters" type="image" src="img/btM.gif" value="-" onclick="switchState('model_expertiseInfo_Parameters');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_expertiseInfo_Parameters" style="display:block"><b><a href="params_xsd.html#Parameters_Batery" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Batery</a></b> , <b><a href="params_xsd.html#Parameters_Oil" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Oil</a></b> , <b><a href="params_xsd.html#Parameters_Transmission" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Transmission</a></b> , <b><a href="params_xsd.html#Parameters_Refrigeration" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Refrigeration</a></b> , <b><a href="params_xsd.html#Parameters_motorSupport" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">motorSupport</a></b> , <b><a href="params_xsd.html#Parameters_motorSound" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">motorSound</a></b> , <b><a href="params_xsd.html#Parameters_Gases" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Gases</a></b> , <b><a href="params_xsd.html#Parameters_gearBox" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">gearBox</a></b> , <b><a href="params_xsd.html#Parameters_Kilometers" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Kilometers</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="params_xsd.html#Parameters_Batery" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Batery</a></b>, <b><a href="params_xsd.html#Parameters_Gases" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Gases</a></b>, <b><a href="params_xsd.html#Parameters_Kilometers" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Kilometers</a></b>, <b><a href="params_xsd.html#Parameters_Oil" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Oil</a></b>, <b><a href="params_xsd.html#Parameters_Refrigeration" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Refrigeration</a></b>, <b><a href="params_xsd.html#Parameters_Transmission" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">Transmission</a></b>, <b><a href="params_xsd.html#Parameters_gearBox" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">gearBox</a></b>, <b><a href="params_xsd.html#Parameters_motorSound" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">motorSound</a></b>, <b><a href="params_xsd.html#Parameters_motorSupport" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for params.xsd')">motorSupport</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_expertiseInfo_Parameters" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_expertiseInfo_Parameters');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_expertiseInfo_Parameters" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;Parameters</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Batery</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Batery&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Oil</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Oil&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Transmission</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Transmission&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Refrigeration</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Refrigeration&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;motorSupport</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/motorSupport&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;motorSound</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/motorSound&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Gases</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Gases&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;gearBox</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/gearBox&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Kilometers</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Kilometers&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/Parameters&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertiseInfo_Parameters" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertiseInfo_Parameters');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertiseInfo_Parameters" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Parameters"</span><span class="tAN"> type=</span><span class="tAV">"Parameters"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_Code"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / Code</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_Code" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_Code');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_Code" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Code.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:int</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_Code" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_Code');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_Code" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_Code" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_Code');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_Code" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Code"</span><span class="tAN"> type=</span><span class="tAV">"xs:int"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_idPartner"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / idPartner</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_idPartner" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_idPartner');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_idPartner" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_idPartner.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_idPartner" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_idPartner');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_idPartner" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_idPartner" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_idPartner');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_idPartner" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"idPartner"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_idExpert"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / idExpert</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_idExpert" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_idExpert');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_idExpert" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_idExpert.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_idExpert" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_idExpert');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_idExpert" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_idExpert" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_idExpert');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_idExpert" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"idExpert"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_State"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / State</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_State" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_State');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_State" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_State.jpeg" usemap="#expertise_xsd_Element_State" /><map name="expertise_xsd_Element_State" id="expertise_xsd_Element_State"><area alt="expertise_xsd.tmp#doneOrnot" href="expertise_xsd.html#doneOrnot" coords="142,9,248,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#doneOrnot" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">doneOrnot</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_State" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_State');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_State" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_expertise_State" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_expertise_State');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_expertise_State" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>YES|NO</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_State" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_State');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_State" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"State"</span><span class="tAN"> type=</span><span class="tAV">"doneOrnot"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_expertiseInformation"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / expertiseInformation</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_expertiseInformation" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_expertiseInformation');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_expertiseInformation" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_expertiseInformation.jpeg" usemap="#expertise_xsd_Element_expertiseInformation" /><map name="expertise_xsd_Element_expertiseInformation" id="expertise_xsd_Element_expertiseInformation"><area alt="expertise_xsd.tmp#expertiseInfo_startTime" href="expertise_xsd.html#expertiseInfo_startTime" coords="242,40,349,84" /><area alt="expertise_xsd.tmp#expertiseInfo_endTime" href="expertise_xsd.html#expertiseInfo_endTime" coords="242,94,349,138" /><area alt="expertise_xsd.tmp#expertiseInfo_Entity" href="expertise_xsd.html#expertiseInfo_Entity" coords="242,148,356,192" /><area alt="expertise_xsd.tmp#expertiseInfo_Parameters" href="expertise_xsd.html#expertiseInfo_Parameters" coords="242,202,360,246" /><area alt="expertise_xsd.tmp#expertiseInfo" href="expertise_xsd.html#expertiseInfo" coords="160,3,274,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#expertiseInfo" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_expertiseInformation" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_expertiseInformation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_expertiseInformation" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_expertise_expertiseInformation" type="image" src="img/btM.gif" value="-" onclick="switchState('model_expertise_expertiseInformation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_expertise_expertiseInformation" style="display:block"><b><a href="expertise_xsd.html#expertiseInfo_startTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">startTime</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_endTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">endTime</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_Entity" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Entity</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_Parameters" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Parameters</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#expertiseInfo_Entity" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Entity</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_Parameters" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Parameters</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_endTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">endTime</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_startTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">startTime</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_expertise_expertiseInformation" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_expertise_expertiseInformation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_expertise_expertiseInformation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;expertiseInformation</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;startTime</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/startTime&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;endTime</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/endTime&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Entity</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Entity&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Parameters</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Parameters&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/expertiseInformation&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_expertiseInformation" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_expertiseInformation');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_expertiseInformation" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"expertiseInformation"</span><span class="tAN"> type=</span><span class="tAV">"expertiseInfo"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_Category"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / Category</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_Category" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_Category');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_Category" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Category.jpeg" usemap="#expertise_xsd_Element_Category" /><map name="expertise_xsd_Element_Category" id="expertise_xsd_Element_Category"><area alt="expertise_xsd.tmp#categoryBase" href="expertise_xsd.html#categoryBase" coords="159,9,282,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#categoryBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">categoryBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_Category" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_Category');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_Category" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_expertise_Category" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_expertise_Category');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_expertise_Category" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Inaccessible Location</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Missing Vehicle</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_Category" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_Category');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_Category" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Category"</span><span class="tAN"> type=</span><span class="tAV">"categoryBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_Reason"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / Reason</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_Reason" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_Reason');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_Reason" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Reason.jpeg" usemap="#expertise_xsd_Element_Reason" /><map name="expertise_xsd_Element_Reason" id="expertise_xsd_Element_Reason"><area alt="expertise_xsd.tmp#otherBase" href="expertise_xsd.html#otherBase" coords="141,9,246,35" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#otherBase" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">otherBase</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_Reason" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_Reason');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_Reason" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_expertise_Reason" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_expertise_Reason');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_expertise_Reason" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">maxLength</td>
+                                    <td width="30%"><b>400</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_Reason" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_Reason');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_Reason" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Reason"</span><span class="tAN"> type=</span><span class="tAV">"otherBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise_date"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b> / date</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise_date" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise_date');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise_date" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_date.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:date</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_expertise_date" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_expertise_date');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_expertise_date" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise_date" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise_date');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise_date" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"date"</span><span class="tAN"> type=</span><span class="tAV">"xs:date"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Expertises"></a><div class="componentTitle">Element <span class="qname">Expertises</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_Expertises" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Expertises');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_Expertises" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_Expertises.jpeg" usemap="#expertise_xsd_Element_Expertises" /><map name="expertise_xsd_Element_Expertises" id="expertise_xsd_Element_Expertises"><area alt="expertise_xsd.tmp#Expertises_expertise" href="expertise_xsd.html#Expertises_expertise" coords="202,2,310,46" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Expertises" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Expertises');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Expertises" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_Expertises" type="image" src="img/btM.gif" value="-" onclick="switchState('model_Expertises');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_Expertises" style="display:block"><b><a href="expertise_xsd.html#Expertises_expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise*</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#Expertises_expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_Expertises" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_Expertises');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_Expertises" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;Expertises</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;expertise</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/expertise&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/Expertises&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Expertises" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Expertises');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Expertises" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Expertises"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"expertise"</span><span class="tAN"> type=</span><span class="tAV">"expertise"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:element&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Expertises_expertise"></a><div class="componentTitle">Element <span class="qname"><b><a href="expertise_xsd.html#Expertises" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Expertises</a></b> / expertise</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_Expertises_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Expertises_expertise');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_Expertises_expertise" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Element_expertise.jpeg" usemap="#expertise_xsd_Element_expertise" /><map name="expertise_xsd_Element_expertise" id="expertise_xsd_Element_expertise"><area alt="expertise_xsd.tmp#expertise_Code" href="expertise_xsd.html#expertise_Code" coords="221,40,310,84" /><area alt="expertise_xsd.tmp#expertise_idPartner" href="expertise_xsd.html#expertise_idPartner" coords="221,94,326,138" /><area alt="expertise_xsd.tmp#expertise_idExpert" href="expertise_xsd.html#expertise_idExpert" coords="221,148,326,192" /><area alt="expertise_xsd.tmp#expertise_State" href="expertise_xsd.html#expertise_State" coords="221,202,335,246" /><area alt="expertise_xsd.tmp#expertise_expertiseInformation" href="expertise_xsd.html#expertise_expertiseInformation" coords="292,256,421,300" /><area alt="expertise_xsd.tmp#expertise_Category" href="expertise_xsd.html#expertise_Category" coords="363,310,494,354" /><area alt="expertise_xsd.tmp#expertise_Reason" href="expertise_xsd.html#expertise_Reason" coords="363,364,476,408" /><area alt="expertise_xsd.tmp#expertise_date" href="expertise_xsd.html#expertise_date" coords="221,418,320,462" /><area alt="expertise_xsd.tmp#expertise" href="expertise_xsd.html#expertise" coords="139,3,235,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="expertise_xsd.html#expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Expertises_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Expertises_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Expertises_expertise" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>unbounded</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_Expertises_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('model_Expertises_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_Expertises_expertise" style="display:block"><b><a href="expertise_xsd.html#expertise_Code" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Code</a></b> , <b><a href="expertise_xsd.html#expertise_idPartner" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idPartner</a></b> , <b><a href="expertise_xsd.html#expertise_idExpert" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idExpert</a></b> , <b><a href="expertise_xsd.html#expertise_State" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">State</a></b> , (<b><a href="expertise_xsd.html#expertise_expertiseInformation" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInformation</a></b> | <b><a href="expertise_xsd.html#expertise_Category" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Category{0,1}</a></b> | <b><a href="expertise_xsd.html#expertise_Reason" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Reason{0,1}</a></b>) , <b><a href="expertise_xsd.html#expertise_date" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">date</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#expertise_Category" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Category</a></b>, <b><a href="expertise_xsd.html#expertise_Code" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Code</a></b>, <b><a href="expertise_xsd.html#expertise_Reason" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Reason</a></b>, <b><a href="expertise_xsd.html#expertise_State" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">State</a></b>, <b><a href="expertise_xsd.html#expertise_date" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">date</a></b>, <b><a href="expertise_xsd.html#expertise_expertiseInformation" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInformation</a></b>, <b><a href="expertise_xsd.html#expertise_idExpert" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idExpert</a></b>, <b><a href="expertise_xsd.html#expertise_idPartner" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idPartner</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_Expertises_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_Expertises_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_Expertises_expertise" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;expertise</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.nCar.pt/expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Code</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/Code&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;idPartner</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/idPartner&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;idExpert</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/idExpert&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;State</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/State&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;expertiseInformation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/expertiseInformation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Category</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/Category&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;Reason</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/Reason&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;date</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/date&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/expertise&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Expertises_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Expertises_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Expertises_expertise" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"expertise"</span><span class="tAN"> type=</span><span class="tAV">"expertise"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"unbounded"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="categoryBase"></a><div class="componentTitle">Simple Type <span class="qname">categoryBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_categoryBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_categoryBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_categoryBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Choices available to explain why the expertise wasn't made.</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_categoryBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_categoryBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_categoryBase" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Simple_Type_categoryBase.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_categoryBase" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_categoryBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_categoryBase" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Inaccessible Location</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Missing Vehicle</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_categoryBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_categoryBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_categoryBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#expertise_Category" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise/Category</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_categoryBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_categoryBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_categoryBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"categoryBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Choices available to explain why the expertise wasn't made.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Inaccessible Location"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Missing Vehicle"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="otherBase"></a><div class="componentTitle">Simple Type <span class="qname">otherBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_otherBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_otherBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_otherBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template that serves to explain the reason why the expertise wasn't done if the other choices didn't aplly (max 400 charcters)</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_otherBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_otherBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_otherBase" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Simple_Type_otherBase.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_otherBase" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_otherBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_otherBase" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">maxLength</td>
+                                    <td width="30%"><b>400</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_otherBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_otherBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_otherBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#expertise_Reason" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise/Reason</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_otherBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_otherBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_otherBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"otherBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template that serves to explain the reason why the expertise wasn't done if the other choices didn't aplly (max 400 charcters)</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:maxLength</span><span class="tAN"> value=</span><span class="tAV">"400"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="timeBase"></a><div class="componentTitle">Simple Type <span class="qname">timeBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_timeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_timeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_timeBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Template to represent hours and minutes</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_timeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_timeBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_timeBase" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Simple_Type_timeBase.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_timeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_timeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_timeBase" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[0-2][0-9][:][0-5][0-9]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_timeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_timeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_timeBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Elements </td>
+                                    <td><b><a href="expertise_xsd.html#expertiseInfo_endTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo/endTime</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_startTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo/startTime</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_timeBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_timeBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_timeBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"timeBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Template to represent hours and minutes</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[0-2][0-9][:][0-5][0-9]"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="entityType"></a><div class="componentTitle">Simple Type <span class="qname">entityType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_entityType" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Type of client we are dealing with</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_entityType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_entityType" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Simple_Type_entityType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_entityType" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>Cliente|Oficina</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_entityType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#entityBase_Type" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">entityBase/Type</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_entityType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_entityType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_entityType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"entityType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Type of client we are dealing with</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"Cliente|Oficina"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="entityBase"></a><div class="componentTitle">Complex Type <span class="qname">entityBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_entityBase" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_entityBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_entityBase" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Client Information</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_entityBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_entityBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_entityBase" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Complex_Type_entityBase.jpeg" usemap="#expertise_xsd_Complex_Type_entityBase" /><map name="expertise_xsd_Complex_Type_entityBase" id="expertise_xsd_Complex_Type_entityBase"><area alt="expertise_xsd.tmp#entityBase_Name" href="expertise_xsd.html#entityBase_Name" coords="225,0,330,44" /><area alt="expertise_xsd.tmp#entityBase_Type" href="expertise_xsd.html#entityBase_Type" coords="225,54,338,98" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_entityBase" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_entityBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_entityBase" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#expertiseInfo_Entity" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInfo/Entity</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_entityBase" type="image" src="img/btM.gif" value="-" onclick="switchState('model_entityBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_entityBase" style="display:block"><b><a href="expertise_xsd.html#entityBase_Name" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Name</a></b> , <b><a href="expertise_xsd.html#entityBase_Type" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Type</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#entityBase_Name" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Name</a></b>, <b><a href="expertise_xsd.html#entityBase_Type" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Type</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_entityBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_entityBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_entityBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"entityBase"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Client Information</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Type"</span><span class="tAN"> type=</span><span class="tAV">"entityType"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertiseInfo"></a><div class="componentTitle">Complex Type <span class="qname">expertiseInfo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_expertiseInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_expertiseInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_expertiseInfo" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Elements that need to appear in the expertise (as long as It's done).</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertiseInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertiseInfo');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertiseInfo" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Complex_Type_expertiseInfo.jpeg" usemap="#expertise_xsd_Complex_Type_expertiseInfo" /><map name="expertise_xsd_Complex_Type_expertiseInfo" id="expertise_xsd_Complex_Type_expertiseInfo"><area alt="expertise_xsd.tmp#expertiseInfo_startTime" href="expertise_xsd.html#expertiseInfo_startTime" coords="237,0,344,44" /><area alt="expertise_xsd.tmp#expertiseInfo_endTime" href="expertise_xsd.html#expertiseInfo_endTime" coords="237,54,344,98" /><area alt="expertise_xsd.tmp#expertiseInfo_Entity" href="expertise_xsd.html#expertiseInfo_Entity" coords="237,108,351,152" /><area alt="expertise_xsd.tmp#expertiseInfo_Parameters" href="expertise_xsd.html#expertiseInfo_Parameters" coords="237,162,355,206" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_expertiseInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_expertiseInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_expertiseInfo" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#expertise_expertiseInformation" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise/expertiseInformation</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_expertiseInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('model_expertiseInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_expertiseInfo" style="display:block"><b><a href="expertise_xsd.html#expertiseInfo_startTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">startTime</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_endTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">endTime</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_Entity" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Entity</a></b> , <b><a href="expertise_xsd.html#expertiseInfo_Parameters" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Parameters</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#expertiseInfo_Entity" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Entity</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_Parameters" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Parameters</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_endTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">endTime</a></b>, <b><a href="expertise_xsd.html#expertiseInfo_startTime" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">startTime</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertiseInfo" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertiseInfo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertiseInfo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"expertiseInfo"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Elements that need to appear in the expertise (as long as It's done).</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"startTime"</span><span class="tAN"> type=</span><span class="tAV">"timeBase"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"endTime"</span><span class="tAN"> type=</span><span class="tAV">"timeBase"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Entity"</span><span class="tAN"> type=</span><span class="tAV">"entityBase"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Parameters"</span><span class="tAN"> type=</span><span class="tAV">"Parameters"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="expertise"></a><div class="componentTitle">Complex Type <span class="qname">expertise</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_expertise" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Expertise schema, If the expertise is missing then It will only ask</span><span class="tI">
+</span><span class="tT">for the reason why, If it was done then It asks for the other parameters</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_expertise');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_expertise" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Complex_Type_expertise.jpeg" usemap="#expertise_xsd_Complex_Type_expertise" /><map name="expertise_xsd_Complex_Type_expertise" id="expertise_xsd_Complex_Type_expertise"><area alt="expertise_xsd.tmp#expertise_Code" href="expertise_xsd.html#expertise_Code" coords="219,0,308,44" /><area alt="expertise_xsd.tmp#expertise_idPartner" href="expertise_xsd.html#expertise_idPartner" coords="219,54,324,98" /><area alt="expertise_xsd.tmp#expertise_idExpert" href="expertise_xsd.html#expertise_idExpert" coords="219,108,324,152" /><area alt="expertise_xsd.tmp#expertise_State" href="expertise_xsd.html#expertise_State" coords="219,162,333,206" /><area alt="expertise_xsd.tmp#expertise_expertiseInformation" href="expertise_xsd.html#expertise_expertiseInformation" coords="290,216,419,260" /><area alt="expertise_xsd.tmp#expertise_Category" href="expertise_xsd.html#expertise_Category" coords="361,270,492,314" /><area alt="expertise_xsd.tmp#expertise_Reason" href="expertise_xsd.html#expertise_Reason" coords="361,324,474,368" /><area alt="expertise_xsd.tmp#expertise_date" href="expertise_xsd.html#expertise_date" coords="219,378,318,422" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_expertise" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#Expertises_expertise" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Expertises/expertise</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('model_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_expertise" style="display:block"><b><a href="expertise_xsd.html#expertise_Code" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Code</a></b> , <b><a href="expertise_xsd.html#expertise_idPartner" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idPartner</a></b> , <b><a href="expertise_xsd.html#expertise_idExpert" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idExpert</a></b> , <b><a href="expertise_xsd.html#expertise_State" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">State</a></b> , (<b><a href="expertise_xsd.html#expertise_expertiseInformation" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInformation</a></b> | <b><a href="expertise_xsd.html#expertise_Category" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Category{0,1}</a></b> | <b><a href="expertise_xsd.html#expertise_Reason" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Reason{0,1}</a></b>) , <b><a href="expertise_xsd.html#expertise_date" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">date</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="expertise_xsd.html#expertise_Category" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Category</a></b>, <b><a href="expertise_xsd.html#expertise_Code" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Code</a></b>, <b><a href="expertise_xsd.html#expertise_Reason" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">Reason</a></b>, <b><a href="expertise_xsd.html#expertise_State" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">State</a></b>, <b><a href="expertise_xsd.html#expertise_date" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">date</a></b>, <b><a href="expertise_xsd.html#expertise_expertiseInformation" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertiseInformation</a></b>, <b><a href="expertise_xsd.html#expertise_idExpert" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idExpert</a></b>, <b><a href="expertise_xsd.html#expertise_idPartner" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">idPartner</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_expertise" type="image" src="img/btM.gif" value="-" onclick="switchState('source_expertise');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_expertise" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"expertise"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Expertise schema, If the expertise is missing then It will only ask for the reason why, If it was done then It asks for the other parameters</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Code"</span><span class="tAN"> type=</span><span class="tAV">"xs:int"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"idPartner"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"idExpert"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"State"</span><span class="tAN"> type=</span><span class="tAV">"doneOrnot"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:choice</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"expertiseInformation"</span><span class="tAN"> type=</span><span class="tAV">"expertiseInfo"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:choice</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Category"</span><span class="tAN"> type=</span><span class="tAV">"categoryBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Reason"</span><span class="tAN"> type=</span><span class="tAV">"otherBase"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:choice&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:choice&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"date"</span><span class="tAN"> type=</span><span class="tAV">"xs:date"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="doneOrnot"></a><div class="componentTitle">Simple Type <span class="qname">doneOrnot</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.nCar.pt/expertise</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_doneOrnot" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_doneOrnot');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_doneOrnot" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Informs if the expertise was done</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_doneOrnot" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_doneOrnot');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_doneOrnot" style="display:block"><img alt="Diagram" border="0" src="img/expertise_xsd_Simple_Type_doneOrnot.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_doneOrnot" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_doneOrnot');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_doneOrnot" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>YES|NO</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_doneOrnot" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_doneOrnot');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_doneOrnot" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="expertise_xsd.html#expertise_State" target="mainFrame" title="http://www.nCar.pt/expertise" onclick="updatePageTitle('Schema documentation for expertise.xsd')">expertise/State</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_doneOrnot" type="image" src="img/btM.gif" value="-" onclick="switchState('source_doneOrnot');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_doneOrnot" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"doneOrnot"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Informs if the expertise was done</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"YES|NO"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.</div>
+      </div><script type="text/javascript"><!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Expertises xmlns="http://www.nCar.pt/expertise"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.nCar.pt/expertise ../expertise.xsd">
+    <expertise>
+        <Code>1</Code>
+        <idPartner>1234</idPartner>
+        <idExpert>123</idExpert>
+        <State>NO</State>
+        <Category>Missing Vehicle</Category>
+        <date>2022-11-23</date>
+    </expertise>
+</Expertises>

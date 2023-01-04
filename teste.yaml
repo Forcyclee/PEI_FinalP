@@ -1,0 +1,252 @@
+openapi: 3.0.0
+info:
+  description: |
+    This is an API that simulates a database for a Manufactory with their appointments and expertises, as well as their partners and experts 
+  version: "1.0.0"
+  title: nCarAPI
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: 8210193@estg.ipp.pt
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: 'https://localhost:8080'
+tags:
+  - name: appointments
+    description: Everything about Appointments
+  - name: expertises
+    description: Everything about expertises
+  - name: partners
+    description: Everything about Partners
+  - name: experts
+    description: Everything about Experts
+paths:
+  /appointments:
+    post:
+      tags:
+        - appointments
+      summary: Add a new appointment to the DB
+      operationId: addApointment
+      responses:
+        '404':
+          description: Invalid input
+      requestBody:
+        $ref: '#/components/requestBodies/Pet'
+  /appointments/find/expert/{expertCode}:
+    get:
+      tags:
+        - appointments
+      summary: Finds Appointments made by the expert in the current day
+      description: expertCode is a string, an alfanumeric code.
+      operationId: findAppointmentByDate
+      parameters:
+        - name: expertCode
+          in: path
+          description: Alfanumeric Code given to every expert.
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/appointment'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/appointment'
+        '404':
+          description: Invalid status value
+  /expertises:
+    post:
+      tags:
+        - expertises
+      summary: Add a new XML file with expertises from a given day to the DB
+      operationId: addExpertises
+      responses:
+        '404':
+          description: Invalid input
+      requestBody:
+        $ref: '#/components/requestBodies/Expertise'
+      
+  '/expertises/find/partner/{PartnersCode}/{state}':
+    get:
+      tags:
+        - expertises
+      summary: Find Expertises by state and partner assigned
+      description: Returns expertises assigned to the partner with the code $PartnersCode completed if the $state = YES and uncompleted if $state = "NO"
+      operationId: getExpertiseByDate
+      parameters:
+        - name: PartnersCode
+          in: path
+          description: ID of the Partner
+          required: true
+          schema:
+            type: string
+        - name: state
+          in: path
+          description: State of the expertise
+          required: true
+          schema:
+            type: string
+        - name: expertiseDate
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expertises'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Expertises'
+        '404':
+          description: Error
+  '/expertises/replace/':
+    put:
+      tags:
+        - expertises
+      summary: Replaces a XML Document with expertises from a determinated day.
+      description: Requires a XML document
+      operationId: replaceExpertise
+      responses:
+        '404':
+          description: Invalid Document
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Expertises'
+        description: Expertise Format.
+        required: true
+      
+  /expertises/show/{expertiseCode}:
+    get:
+      tags:
+        - expertises
+      summary: Returns a Expertise with the same code
+      description: Returns a Expertise with the same code
+      operationId: getExpertise
+      parameters: 
+        - name: expertiseCode
+          in: path
+          description: Integer code
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+  /partners:
+    post:
+      tags:
+        - partners
+      summary: Add a Partner to the DB.
+      operationId: addPartner
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/partner'
+        description: Partner placed to be added
+        required: true
+  /experts:
+    post:
+      tags:
+        - Experts
+      summary: Add a Expert to the DB.
+      operationId: addExpert
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/expert'
+        description: Expert placed to be added
+        required: true
+components:
+  schemas:
+    appointment:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int64
+        local:
+          type: object
+        Vehicle:
+          type: object
+        date:
+          type: string
+          format: date
+      xml:
+        name: appointment
+    Expertises:
+      type: object
+      properties:
+        idPartner:
+          type: integer
+        idExpert:
+          type: integer
+        date:
+          type: string
+          format: date
+        expertise:
+          type: object
+      xml:
+        name: expertise
+    partner:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int64
+        Name:
+          type: string
+      xml:
+        name: partner
+    expert:
+      type: object
+      properties:
+        Code:
+          type: integer
+          format: int64
+        Name:
+          type: string
+      xml:
+        name: expert
+  requestBodies:
+    Pet:
+      content:
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/appointment'
+      description: Appointment that needs to be stored
+      required: true
+    Expertise:
+      content:
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Expertises'
+      description: Expertises from a given day that needs to be stored
+      required: true
